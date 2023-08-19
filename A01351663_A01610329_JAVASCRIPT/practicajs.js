@@ -32,3 +32,82 @@ calculadora.sumar(5, 3);
 calculadora.restar(10, 7, 2);
 calculadora.multiplicar(4, 6);
 calculadora.dividir(15, 3, 3);
+
+class CalculadoraPromise {
+    sumar(num1, num2, factor = 1) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const resultado = num1 + num2;
+                if (isNaN(resultado)) {
+                    reject("Operación inválida: sumar");
+                } else {
+                    resolve(resultado * factor);
+                }
+            }, 1000); // Simulamos 1 segundo de tiempo de ejecución
+        });
+    }
+
+    restar(num1, num2, factor = 1) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const resultado = num1 - num2;
+                if (isNaN(resultado)) {
+                    reject("Operación inválida: restar");
+                } else {
+                    resolve(resultado * factor);
+                }
+            }, 2000); // Simulamos 2 segundos de tiempo de ejecución
+        });
+    }
+
+    multiplicar(num1, num2, factor = 1) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const resultado = num1 * num2;
+                if (isNaN(resultado)) {
+                    reject("Operación inválida: multiplicar");
+                } else {
+                    resolve(resultado * factor);
+                }
+            }, 3000); // Simulamos 3 segundos de tiempo de ejecución
+        });
+    }
+
+    dividir(num1, num2, factor = 1) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (num2 === 0) {
+                    reject("No se puede dividir por cero");
+                    return;
+                }
+
+                const resultado = num1 / num2;
+                if (isNaN(resultado)) {
+                    reject("Operación inválida: dividir");
+                } else {
+                    resolve(resultado * factor);
+                }
+            }, 4000); // Simulamos 4 segundos de tiempo de ejecución
+        });
+    }
+}
+
+// Ejemplo de uso
+const calculadoraPromise = new CalculadoraPromise();
+
+calculadoraPromise.sumar(5, 3)
+    .then(result => console.log(`La suma es: ${result}`))
+    .catch(error => console.error(error));
+
+calculadoraPromise.restar(10, 7, 2)
+    .then(result => console.log(`La resta es: ${result}`))
+    .catch(error => console.error(error));
+
+calculadoraPromise.multiplicar(4, 6)
+    .then(result => console.log(`La multiplicación es: ${result}`))
+    .catch(error => console.error(error));
+
+calculadoraPromise.dividir(15, 3, 3)
+    .then(result => console.log(`La división es: ${result}`))
+    .catch(error => console.error(error));
+
