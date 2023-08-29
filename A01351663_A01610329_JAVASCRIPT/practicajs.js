@@ -111,3 +111,21 @@ calculadoraPromise.dividir(15, 3, 3)
     .then(result => console.log(`La división es: ${result}`))
     .catch(error => console.error(error));
 
+
+// Función para obtener y mostrar los datos de un endpoint 
+async function fetchAndDisplayData(endpoint) {
+    try {
+      const response = await fetch(endpoint);
+      const data = await response.json();
+      console.log("Data:", data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+  
+  // Endpoint que será utilizado
+  const endpoint = "https://jsonplaceholder.typicode.com/posts/1/comments";
+  
+  // Mostrar el endpoint en la consola 
+  fetchAndDisplayData(endpoint);
+      
