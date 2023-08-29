@@ -1,3 +1,6 @@
+// Jose Luis Banda A01610329
+// Saúl Romero A01351663
+
 class Calculadora {
     sumar(num1, num2, factor = 1) {
         const resultado = num1 + num2;
