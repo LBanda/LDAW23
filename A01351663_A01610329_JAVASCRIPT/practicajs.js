@@ -1,3 +1,6 @@
+// Jose Luis Banda A01610329
+// Saúl Romero A01351663
+
 class Calculadora {
     sumar(num1, num2, factor = 1) {
         const resultado = num1 + num2;
@@ -111,3 +114,31 @@ calculadoraPromise.dividir(15, 3, 3)
     .then(result => console.log(`La división es: ${result}`))
     .catch(error => console.error(error));
 
+      
+
+
+  // Función para obtener y mostrar los datos de un endpoint 
+async function fetchDataAndDisplay(endpoint) {
+    try {
+      const response = await fetch(endpoint);
+      const data = await response.json();
+  
+      return data;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+  
+  // Endpoint que sera utilizado
+  const endpoint = "https://jsonplaceholder.typicode.com/posts/1/comments";
+  
+  // Mostrar el endpoint desestructurado en la consola
+  (async () => {
+    const { postId, id, name, email, body } = await fetchDataAndDisplay(endpoint);
+  
+    console.log("ID:", postId);
+    console.log("ID Comentario:", id);
+    console.log("Nombre:", name);
+    console.log("Mail:", email);
+    console.log("Descripción:", body);
+  })();
