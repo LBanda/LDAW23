@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aplicacion Simple</title>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/reactdom.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+
+    <body>
+
+        <script type="text/babel">
+            //Esto es JSX: Estamos mezclando codigo de JavaScript con XML
+            const h1Html = <h1>Portal de Videojuegos</h1>;
+            //Obtenemos la referencia al elemento div al cual vamos a injectar el html declarado
+            const divToInject = document.querySelector('#divRoot');
+            //Utilizamos React para injectar el html en el elemento div
+            ReactDOM.render(h1Html,divToInject);
+            </script>
+            <!--
+            Creamos el div con el id "divRoot", al cual vamos a "injectarle" el html que
+            indicamos en el script.
+            -->
+            <div id="divRoot"></div>
+
+    </body>
+
+</html>
