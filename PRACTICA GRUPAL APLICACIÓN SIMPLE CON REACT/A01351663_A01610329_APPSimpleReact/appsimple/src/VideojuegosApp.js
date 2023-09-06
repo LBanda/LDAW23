@@ -19,6 +19,20 @@ const VideojuegosApp = ({nombre}) =>{
         // con dicha desestructuración.
         setCantidadVideojuegos(cantidadVideojuegos + 1);
     }
+
+    const decrementaVideojuegos = (e) => {
+        //Utilizamos la funcion que obtuvimos con la desestructuración del hook useState
+        // para incrementar el valor de cantidadVideojuegos, el cual también obtuvimos
+        // con dicha desestructuración.
+        setCantidadVideojuegos(cantidadVideojuegos - 1);
+    }
+
+    const reiniciarVideojuegos = (e) => {
+        //Utilizamos la funcion que obtuvimos con la desestructuración del hook useState
+        // para incrementar el valor de cantidadVideojuegos, el cual también obtuvimos
+        // con dicha desestructuración.
+        setCantidadVideojuegos(0);
+    }
     return (
         <>
             <h1>{titulo}</h1>
@@ -39,6 +53,8 @@ const VideojuegosApp = ({nombre}) =>{
                 https://reactjs.org/docs/events.html
             */}
             <button onClick = { (e) => { incrementaVideojuegos(e) } }>Incrementar Videojuegos</button>
+            <button onClick = { (e) => { decrementaVideojuegos(e) } }>Decrementar Videojuegos</button>
+            <button onClick = { (e) => { reiniciarVideojuegos(e) } }>Reiniciar Videojuegos</button>
             {/*
                 Colocamos la cantidad de videojuegos que tenemos. Utilizamos
                 el valor de
