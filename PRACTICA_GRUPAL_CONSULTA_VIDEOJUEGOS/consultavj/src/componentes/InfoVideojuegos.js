@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from "react-bootstrap";
+import { Card, CardGroup ,Row, Col} from "react-bootstrap";
 //Recibe como argumento el género que se va utilizar para hacer la búsqueda de los videojuegos
 // utilizando el API de RAWG
 export const InfoVideojuegos = ({ genero }) => {
@@ -37,20 +37,27 @@ setInfoJuegos(juegos);
     }
 
     return (
-
-        infoJuegos.map(({ nombre, imagen, rating, metacritic }) => (
-        <Card style={{ flex: 1 }}>
-          <Card.Img width="50px" variant="top" src={imagen} />
-          <Card.Body>
-            <Card.Title>{nombre}</Card.Title>
-            <Card.Text>
-              Rating: {rating}
-              <br />
-              Metacritic: {metacritic}
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      )
-    )
+        <>
+        <h3 className="card-title">{genero}</h3>
+        <Row>
+      {infoJuegos.map(({ nombre, imagen, rating, metacritic }) => (
+        <Col sm={3} key={nombre}>
+          <CardGroup>
+            <Card style={{ flex: 1 }}>
+              <Card.Img width="auto" variant="top" src={imagen} />
+              <Card.Body>
+                <Card.Title>{nombre}</Card.Title>
+                <Card.Text>
+                  Rating: {rating}
+                  <br />
+                  Metacritic: {metacritic}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      ))}
+    </Row>
+    </>
     )
 }
