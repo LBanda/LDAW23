@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AgregaGenero } from './componentes/AgregaGenero';
 import { ResultadoVideojuegos } from './componentes/ResultadoVideojuegos';
+import { InfoVideojuegos } from './componentes/InfoVideojuegos';
 
 
 export const VideojuegosApp = () => {
@@ -37,7 +38,7 @@ export const VideojuegosApp = () => {
                         //Reemplazamos el elemento <li> por la llamda al componente ResultadoVideojuegos, pasando
                         // como parámetro el género. Se tiene que utilizar la propiedad key al igual que se hizo
                         // con el elemento <li> anteriormente
-                        return <ResultadoVideojuegos
+                        return <InfoVideojuegos
                             key={genero}
                             genero={genero}
                         />
