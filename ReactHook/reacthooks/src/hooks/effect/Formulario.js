@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Mensaje } from './Mensaje';
+
 export const Formulario = () => {
     //Creamos el estado del formulario, cuyo estado inicial va ser un objeto con email y nombre vacíos.
     const [formState, setFormState] = useState({
@@ -61,6 +63,12 @@ export const Formulario = () => {
                     onChange={handleInputChange}
                 />
             </div>
+            {/*
+ Esta sintaxis es un condicional, de tal forma que si se la condicion 'nombre === "Jorge"' es
+ true entonces se evalua '<Mensaje />', y si 'nombre' es false ya no se evalúa '<Mensaje />'
+ */}
+            {(nombre === 'Jorge') && <Mensaje />}
+
         </>
     )
 }
