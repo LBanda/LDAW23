@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AgregaGenero } from './componentes/AgregaGenero';
-import { ResultadoVideojuegos } from './componentes/ResultadoVideojuegos';
+//import { ResultadoVideojuegos } from './componentes/ResultadoVideojuegos';
 import { InfoVideojuegos } from './componentes/InfoVideojuegos';
 
 

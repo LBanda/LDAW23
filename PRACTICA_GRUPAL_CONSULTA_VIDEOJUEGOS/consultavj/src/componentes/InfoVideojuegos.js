@@ -1,63 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import { Card, CardGroup ,Row, Col} from "react-bootstrap";
-//Recibe como argumento el género que se va utilizar para hacer la búsqueda de los videojuegos
-// utilizando el API de RAWG
-export const InfoVideojuegos = ({ genero }) => {
+import React from 'react';
+import { useFetch } from '../hooks/custom/useFetch';
 
-    //Utilizamos useEffect para invocar la función getVideojuegos.
-    useEffect(() => {
-        getVideojuegos();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+export const InfoVideojuegos = ({genero}) => {
 
-    //Creamos el estado del componente con useState
-    const [infoJuegos, setInfoJuegos] = useState([]);
 
-    const getVideojuegos = async () => {
-        //URL del api de RAWG que validamos en postman
-        const url = 'https://api.rawg.io/api/games?key=33b59237bfff4660a9981db50a711dce&genres=' + encodeURI(genero);
-        //Utilizamos Fetch API para invocar la url.
-        const respuesta = await fetch(url);
-        //Recuperamos el JSON de la respuesta, el cual contiene la información de los videojuegos.
-        const { results } = await respuesta.json();
-        //Obtenemos solamente la información que vamos a necesitar del json de la respuesta.
-        const juegos = results.map(juego => {
-            return {
-                id: juego.id,
-                nombre: juego.name,
-                imagen: juego.background_image,
-                rating: juego.rating,
-                metacritic: juego.metacritic   
-            }
+    const url = 'https://api.rawg.io/api/games?key=33b59237bfff4660a9981db50a711dce&genres=' + genero;
 
-        })
-//Invocamos el metodo setInfoJuegos que obtivimos con la desestructuración del hook useState
-setInfoJuegos(juegos);
+    const { loading, info }  = useFetch(url);
+    console.log(info);
+    
 
-    }
 
-    return (
+
+    return(
         <>
-        <h3 className="card-title">{genero}</h3>
-        <Row>
-      {infoJuegos.map(({ nombre, imagen, rating, metacritic }) => (
-        <Col sm={3} key={nombre}>
-          <CardGroup>
-            <Card style={{ flex: 1 }}>
-              <Card.Img width="auto" variant="top" src={imagen} />
-              <Card.Body>
-                <Card.Title>{nombre}</Card.Title>
-                <Card.Text>
-                  Rating: {rating}
-                  <br />
-                  Metacritic: {metacritic}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </CardGroup>
-        </Col>
-      ))}
-    </Row>
-    </>
-    )
+            <h3 className="card-title">{genero}</h3>
+            <div className="row row-cols-4">
+                {loading ? (
+                        <div className="alert alert-info text-center">
+                            Loading...
+                        </div>
+                    ) 
+                    : 
+                    (
+                        info.map( ({id, nombre, imagen, rating, metacritic}) => {
+                            return <div key={id} className="card">
+                                    <img src={imagen} className="card-img-top" alt="..."></img>
+                                        <div className="card-body">
+                                            <h5 className="card-title">{nombre}</h5>
+                                            <p  className="card-text">Rating: {rating} <br></br> Metacritic: {metacritic}</p>
+                                        </div>
+                                    </div>
+                        }
+                        )
+                    )
+                }
+        </div>
+        </>
+
+        
+        )
 }
