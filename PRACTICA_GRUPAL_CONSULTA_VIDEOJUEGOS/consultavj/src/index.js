@@ -1,9 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-//import { VideojuegosApp } from './VideojuegosApp';
-import { GameCollectionApp } from './componentes/collection/GameCollectionApp';
+import { ConsultaVJ } from './ConsultaVJ';
 const container = document.getElementById('root');
 const root = createRoot(container);
-//root.render(<VideojuegosApp />);
-root.render(<GameCollectionApp/>)
+root.render(<ConsultaVJ />);

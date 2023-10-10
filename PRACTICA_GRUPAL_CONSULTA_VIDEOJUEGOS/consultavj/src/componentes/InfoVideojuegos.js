@@ -1,12 +1,12 @@
 import React from 'react';
-import { useFetch } from '../hooks/custom/useFetch';
+import { useFetch1 } from '../hooks/custom/useFetch1';
 
 export const InfoVideojuegos = ({genero}) => {
 
 
     const url = 'https://api.rawg.io/api/games?key=33b59237bfff4660a9981db50a711dce&genres=' + genero;
 
-    const { loading, info }  = useFetch(url);
+    const { loading, info }  = useFetch1(url);
     console.log(info);
     
 
