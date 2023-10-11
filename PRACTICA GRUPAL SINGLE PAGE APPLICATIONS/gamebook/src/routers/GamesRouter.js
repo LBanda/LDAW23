@@ -6,6 +6,7 @@ import { PcScreen } from '../componentes/pc/PcScreen';
 import { PsScreen } from '../componentes/ps/PsScreen';
 import { SwitchScreen } from '../componentes/switch/SwitchScreen';
 import { XboxScreen } from '../componentes/xbox/XboxScreen';
+import { BuscadorScreen } from '../componentes/buscador/BuscadorScreen';
 export const GamesRouter = () => {
     return (
         <>
@@ -17,6 +18,7 @@ export const GamesRouter = () => {
                     <Route exact path="/switch" element={<SwitchScreen />} />
                     <Route exact path="/pc" element={<PcScreen />} />
                     <Route exact path="/game/:gameId" element={<GameScreen />} />
+                    <Route exact path="/buscar" element={<BuscadorScreen/>} />
                     <Route
                         path="*"
                         element={<Navigate to="/ps" replace />}
