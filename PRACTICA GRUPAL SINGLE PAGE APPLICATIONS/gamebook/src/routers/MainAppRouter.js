@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { UserContext } from '../hooks/userContext';
+
 import {
     BrowserRouter as Router,
     Routes,
@@ -7,8 +9,16 @@ import {
 import { LoginScreen } from '../componentes/login/LoginScreen';
 import { GamesRouter } from './GamesRouter';
 export const MainAppRouter = () => {
+    const [user, setUser] = useState({});
     return (
         <Router>
+            <UserContext.Provider value={
+            {
+            user,
+            setUser
+            }
+            }>
+            </UserContext.Provider>
             <div>
                 <Routes>
                     <Route exact path="/login" element={<LoginScreen />} />
@@ -19,5 +29,6 @@ export const MainAppRouter = () => {
                 </Routes>
             </div>
         </Router>
+        
     )
 }
