@@ -2,9 +2,12 @@
 'use strict';
 module.exports = function (app) {
     const gameCollection = require('./gameCollectionController');
+    app.route('/games/search')
+        .get(gameCollection.buscar_juegos);
     app.route('/games')
         .get(gameCollection.obtener_juegos)
         .post(gameCollection.agregar_juego);
     app.route('/games/:gameIndex')
-        .get(gameCollection.obtener_juego);
+        .get(gameCollection.obtener_juego)
+        .delete(gameCollection.eliminar_juego);
 };
