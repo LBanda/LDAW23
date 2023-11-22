@@ -1,0 +1,6 @@
+db.createCollection("campus");
+db.campus.insertOne( { "_id":"CEM", "nombre":"Campus Estado de Mexico" } );
+db.createCollection("alumnos");
+db.alumnos.insertOne( { "campus" : "CEM" , "nombre" : "Rick Sanchez" , "matricula" : "00954558" , "materias" : [ { "_id" : "TC3052" , "nombre" : "Laboratorio de Desarrollo de Aplicaciones Web" } , { "_id" : "TC2026" , "nombre" : "Desarrollo de Aplicaciones Web" }, { "_id" : "TC2025" , "nombre" : "Programacion Avanzada" } ], "foto":"http://pm1.narvii.com/6545/8f765c17c81c456b0640a1513fa2d5862ac59c42_00.jpg" } );
+db.alumnos.insertOne( { "campus" : "CEM" , "nombre" : "Morty Smith" , "matricula" : "00954557" , "materias" : [ { "_id" : "TC3052" , "nombre" : "Laboratorio de Desarrollo de Aplicaciones Web" } , { "_id" : "TC2025" , "nombre" : "Programacion Avanzada" } ], "foto":"https://images.8tracks.com/cover/i/012/765/788/Eyepatchevilmorty-8791.jpg" } );
+db.alumnos.insertOne( { "campus" : "CEM" , "nombre" : "Jerry Smith" , "matricula" : "00954556" , "materias" : [ { "_id" : "TC2025" , "nombre" : "Programacion Avanzada" } ], "foto":"https://pbs.twimg.com/profile_images/738078769920020481/xpW4r-Tr_400x400.jpg" } );
