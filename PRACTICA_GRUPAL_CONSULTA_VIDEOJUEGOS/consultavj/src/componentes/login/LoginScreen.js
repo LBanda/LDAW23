@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../hooks/custom/userContext';
+//import { UserContext } from '../../hooks/custom/userContext';
 
 export const LoginScreen = () => {
    // const { setUser } = useContext(UserContext);
@@ -12,7 +12,7 @@ export const LoginScreen = () => {
 
     const doLogin = () => {
         if (username === 'Fulanito' && password === '1234') {
-            navigate("/");
+            navigate("/videojuegos");
         } else {
             alert('Credenciales incorrectas. Inténtelo de nuevo.');
         }
