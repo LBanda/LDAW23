@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+//import { useUser } from '../../hooks/custom/userContext';
+
 export const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -37,6 +39,11 @@ export const Navbar = () => {
                         Salir
                     </NavLink>
                 </ul>
+            </div>
+            <div>
+               
+            <Link className="navbar-brand" to="/"> Fulanito </Link>
+
             </div>
         </nav>
     )
