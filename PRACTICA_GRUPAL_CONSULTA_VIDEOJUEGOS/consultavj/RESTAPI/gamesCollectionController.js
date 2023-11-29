@@ -245,3 +245,22 @@ exports.busqueda_log_palabra = async function (req, res) {
 //Ejemplo de ejecucion 
 };
 
+exports.login = async function (req, res) {
+    const { username, contrasena } = req.body;
+
+    // Connect to the database
+    const database = client.db(consultaVJ);
+    const usersCollection = database.collection("usuarios"); // Assuming you have a "users" collection
+
+    // Check the credentials in the database
+    const user = await usersCollection.findOne({ username, contrasena });
+
+    if (user) {
+        // Valid credentials
+        res.status(200).json({ message: 'Login successful' });
+    } else {
+        // Invalid credentials
+        res.status(401).json({ message: 'Invalid credentials' });
+    }
+};
+
