@@ -1,22 +1,33 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-//import { UserContext } from '../../hooks/custom/userContext';
 
 export const LoginScreen = () => {
-   // const { setUser } = useContext(UserContext);
-
     const navigate = useNavigate();
+    const [username, setUsername] = useState(''); // Initialize state for username
+    const [contrasena, setPassword] = useState(''); // Initialize state for password
 
-    const [username, setUsername] = useState('Fulanito'); // Valor inicial para username
-    const [password, setPassword] = useState('1234'); // Valor inicial para password
+    const doLogin = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, contrasena }),
+            });
 
-    const doLogin = () => {
-        if (username === 'Fulanito' && password === '1234') {
-            navigate("/videojuegos");
-        } else {
-            alert('Credenciales incorrectas. Inténtelo de nuevo.');
+            if (response.ok) {
+                // Successful login, navigate to the desired page
+                navigate("/videojuegos");
+            } else {
+                // Unsuccessful login, show an alert
+                alert('Credenciales incorrectas. Inténtelo de nuevo.');
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            // Handle error, show an alert, or redirect to an error page
         }
-    }
+    };
 
     return (
         <>
@@ -27,7 +38,7 @@ export const LoginScreen = () => {
                     type="text"
                     id="username"
                     name="username"
-                    value={username} // Valor del input
+                    value={username} // Value from state
                     onChange={(e) => setUsername(e.target.value)}
                     required
                 /><br /><br />
@@ -37,7 +48,7 @@ export const LoginScreen = () => {
                     type="password"
                     id="password"
                     name="password"
-                    value={password} // Valor del input
+                    value={contrasena} // Value from state
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 /><br /><br />
@@ -47,5 +58,5 @@ export const LoginScreen = () => {
                 </button>
             </form>
         </>
-    )
-}
+    );
+};
